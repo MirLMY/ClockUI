@@ -6,6 +6,11 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QTimer *timer = new QTimer(this);//新建一个定时器对象
+
+    timer->start(1000);//1000代表1000ms，即1s
+
+    connect(timer,SIGNAL(timeout()),this,SLOT(update()));//连接定时器的timeout（）信号与update函数,update函数产生重绘消息，调用paintEvent
 }
 
 MainWindow::~MainWindow()
